@@ -65,56 +65,387 @@
         <p>Discuss algorithms, find teammates for ICPC, and learn from grandmasters.</p>
     </section>
 
+
     <!-- Discussion Hub -->
     <section class="section">
-        <div class="grid-3" style="grid-template-columns: 2fr 1fr;">
-            <div>
-                <h2 class="mb-4">Discussion Hub</h2>
-                <div class="card mb-4" style="padding: 20px; height: auto;">
-                    <div style="display: flex; gap: 15px;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--highlight-color);"></div>
-                        <div>
-                            <h4 style="margin: 0;">tourist</h4>
-                            <p class="caption">2 hours ago in <a href="#" style="color: var(--accent-color);">Global Round 142 Discussion</a></p>
-                            <p style="margin-top: 10px;">For problem D, you can optimize the DP state by observing that the maximum value never exceeds N. This reduces complexity to O(N log N).</p>
-                            <div style="display: flex; gap: 15px; margin-top: 10px; color: var(--text-secondary); font-size: 14px;">
-                                <span style="color: var(--accent-color);">â–² 342</span>
-                                <span>ðŸ’¬ 45 Replies</span>
+        <div class="discussion-hub-layout">
+
+            <!-- Left: Posts -->
+            <div class="discussion-main">
+                <div class="discussion-header">
+                    <div>
+                        <div class="badge badge-medium mb-2" style="background: rgba(0,212,170,0.1); color: var(--accent-color); border: 1px solid var(--accent-color); display: inline-block;">Live Discussions</div>
+                        <h2 style="margin: 0; font-size: clamp(26px, 3vw, 36px);">Discussion Hub</h2>
+                    </div>
+                    <a href="#" class="btn btn-outline" style="padding: 10px 22px; font-size: 14px; white-space: nowrap;">+ New Post</a>
+                </div>
+
+                <!-- Post 1 - Pinned -->
+                <div class="disc-post pinned-post">
+                    <div class="disc-pin-label">📌 Pinned</div>
+                    <div class="disc-post-inner">
+                        <div class="disc-avatar" style="background: linear-gradient(135deg, var(--highlight-color), #c47d00);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div class="disc-post-body">
+                            <div class="disc-meta">
+                                <span class="disc-username">tourist</span>
+                                <span class="disc-rank-badge" style="background: rgba(255,183,3,0.15); color: var(--highlight-color); border: 1px solid rgba(255,183,3,0.3);">Grandmaster</span>
+                                <span class="disc-time">2 hours ago</span>
+                            </div>
+                            <div class="disc-topic-tag">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                                Global Round 142 Discussion
+                            </div>
+                            <p class="disc-content">For problem D, you can optimize the DP state by observing that the maximum value never exceeds N. This reduces complexity from O(N²) to <strong>O(N log N)</strong> — a significant gain for large inputs.</p>
+                            <div class="disc-actions">
+                                <button class="disc-action-btn active">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    342
+                                </button>
+                                <button class="disc-action-btn">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    45 Replies
+                                </button>
+                                <button class="disc-action-btn">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                    Share
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-4" style="padding: 20px; height: auto;">
-                    <div style="display: flex; gap: 15px;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #00D4AA;"></div>
-                        <div>
-                            <h4 style="margin: 0;">algo_master</h4>
-                            <p class="caption">5 hours ago in <a href="#" style="color: var(--accent-color);">General Algorithms</a></p>
-                            <p style="margin-top: 10px;">What is the most intuitive way to understand Heavy-Light Decomposition? I've read the standard tutorials but the implementation feels bulky.</p>
-                            <div style="display: flex; gap: 15px; margin-top: 10px; color: var(--text-secondary); font-size: 14px;">
-                                <span style="color: var(--accent-color);">â–² 89</span>
-                                <span>ðŸ’¬ 12 Replies</span>
+
+                <!-- Post 2 -->
+                <div class="disc-post">
+                    <div class="disc-post-inner">
+                        <div class="disc-avatar" style="background: linear-gradient(135deg, var(--accent-color), #007a62);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div class="disc-post-body">
+                            <div class="disc-meta">
+                                <span class="disc-username">algo_master</span>
+                                <span class="disc-rank-badge" style="background: rgba(0,212,170,0.1); color: var(--accent-color); border: 1px solid rgba(0,212,170,0.25);">Expert</span>
+                                <span class="disc-time">5 hours ago</span>
+                            </div>
+                            <div class="disc-topic-tag">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                                General Algorithms
+                            </div>
+                            <p class="disc-content">What is the most intuitive way to understand Heavy-Light Decomposition? I've read the standard tutorials but the implementation feels bulky and hard to debug under contest pressure.</p>
+                            <div class="disc-actions">
+                                <button class="disc-action-btn active">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    89
+                                </button>
+                                <button class="disc-action-btn">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    12 Replies
+                                </button>
+                                <button class="disc-action-btn">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                    Share
+                                </button>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Post 3 -->
+                <div class="disc-post">
+                    <div class="disc-post-inner">
+                        <div class="disc-avatar" style="background: linear-gradient(135deg, #7c3aed, #4c1d95);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div class="disc-post-body">
+                            <div class="disc-meta">
+                                <span class="disc-username">code_ninja</span>
+                                <span class="disc-rank-badge" style="background: rgba(124,58,237,0.12); color: #a78bfa; border: 1px solid rgba(124,58,237,0.3);">Master</span>
+                                <span class="disc-time">1 day ago</span>
+                            </div>
+                            <div class="disc-topic-tag">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                                Tips &amp; Tricks
+                            </div>
+                            <p class="disc-content">Sharing my template for segment tree with lazy propagation. Works for range update + range query in O(log N). Feel free to adapt it for your own uses.</p>
+                            <div class="disc-actions">
+                                <button class="disc-action-btn active">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    217
+                                </button>
+                                <button class="disc-action-btn">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    31 Replies
+                                </button>
+                                <button class="disc-action-btn">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                    Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="#" class="btn btn-outline" style="padding: 10px 30px;">View All Discussions</a>
                 </div>
             </div>
-            
-            <div>
-                <h2 class="mb-4">Contest Announcements</h2>
-                <div class="card mb-4" style="border-left: 4px solid #FFB703; height: auto;">
-                    <h4 style="margin-bottom: 5px;">Weekly Sprint 90</h4>
-                    <p class="caption mb-2">Starts in 2 days</p>
-                    <p style="font-size: 14px;">Div. 2 and Div. 3 rated round. 6 problems, 2 hours.</p>
+
+            <!-- Right: Sidebar -->
+            <div class="discussion-sidebar" style="margin-top: 80px;">
+                <h3 class="sidebar-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--highlight-color)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Contest Announcements
+                </h3>
+
+                <div class="announce-card" style="border-left-color: var(--highlight-color);">
+                    <div class="announce-badge" style="background: rgba(255,183,3,0.1); color: var(--highlight-color);">LIVE SOON</div>
+                    <h4 class="announce-title">Weekly Sprint 90</h4>
+                    <p class="announce-meta">Starts in 2 days</p>
+                    <p class="announce-desc">Div. 2 &amp; Div. 3 rated round. 6 problems, 2 hours.</p>
+                    <a href="#" class="disc-action-btn" style="margin-top: 8px; width: 100%; justify-content: center; padding: 8px 0;">Register →</a>
                 </div>
-                <div class="card" style="border-left: 4px solid var(--accent-color); height: auto;">
-                    <h4 style="margin-bottom: 5px;">Quant Systems Hiring Hackathon</h4>
-                    <p class="caption mb-2">Starts in 1 week</p>
-                    <p style="font-size: 14px;">Top 50 win interviews. Open to all users.</p>
+
+                <div class="announce-card" style="border-left-color: var(--accent-color);">
+                    <div class="announce-badge" style="background: rgba(0,212,170,0.1); color: var(--accent-color);">HIRING</div>
+                    <h4 class="announce-title">Quant Systems Hackathon</h4>
+                    <p class="announce-meta">Starts in 1 week</p>
+                    <p class="announce-desc">Top 50 win fast-track interviews. Open to all users.</p>
+                    <a href="#" class="disc-action-btn" style="margin-top: 8px; width: 100%; justify-content: center; padding: 8px 0;">Register →</a>
+                </div>
+
+                <div class="sidebar-topics">
+                    <h4 class="sidebar-section-label">Trending Tags</h4>
+                    <div class="topic-chips">
+                        <span class="topic-chip">#DynamicProgramming</span>
+                        <span class="topic-chip">#Graphs</span>
+                        <span class="topic-chip">#SegmentTree</span>
+                        <span class="topic-chip">#HLD</span>
+                        <span class="topic-chip">#Greedy</span>
+                        <span class="topic-chip">#BinarySearch</span>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <style>
+            .discussion-hub-layout {
+                display: grid;
+                grid-template-columns: 1fr 340px;
+                gap: 40px;
+                max-width: 1200px;
+                margin: 0 auto;
+                align-items: start;
+            }
+            .discussion-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin-bottom: 28px;
+                gap: 20px;
+            }
+            .disc-post {
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 16px;
+                padding: 24px;
+                margin-bottom: 16px;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            .disc-post:hover {
+                border-color: rgba(0, 212, 170, 0.35);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+                transform: translateY(-2px);
+            }
+            [data-theme="light"] .disc-post:hover {
+                box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            }
+            .pinned-post {
+                border-color: rgba(255, 183, 3, 0.3);
+                background: linear-gradient(135deg, rgba(255,183,3,0.03), var(--card-bg));
+            }
+            .disc-pin-label {
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--highlight-color);
+                letter-spacing: 0.5px;
+                margin-bottom: 12px;
+            }
+            .disc-post-inner {
+                display: flex;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            .disc-avatar {
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+            .disc-post-body { flex: 1; min-width: 0; }
+            .disc-meta {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-bottom: 6px;
+            }
+            .disc-username {
+                font-weight: 600;
+                font-size: 15px;
+                color: var(--text-color);
+            }
+            .disc-rank-badge {
+                font-size: 11px;
+                font-weight: 600;
+                padding: 2px 10px;
+                border-radius: 20px;
+                letter-spacing: 0.3px;
+            }
+            .disc-time {
+                font-size: 12px;
+                color: var(--text-secondary);
+                margin-left: auto;
+            }
+            .disc-topic-tag {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 12px;
+                color: var(--accent-color);
+                background: rgba(0,212,170,0.08);
+                padding: 3px 10px;
+                border-radius: 6px;
+                margin-bottom: 10px;
+                font-weight: 500;
+            }
+            .disc-content {
+                font-size: 14.5px;
+                line-height: 1.65;
+                color: var(--text-secondary);
+                margin: 0 0 14px 0;
+            }
+            .disc-content strong { color: var(--text-color); }
+            .disc-actions {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            .disc-action-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 14px;
+                border-radius: 8px;
+                font-size: 13px;
+                font-weight: 500;
+                color: var(--text-secondary);
+                background: var(--icon-bg);
+                border: 1px solid var(--border-color);
+                cursor: pointer;
+                transition: all 0.25s ease;
+                text-decoration: none;
+            }
+            .disc-action-btn:hover, .disc-action-btn.active {
+                background: rgba(0,212,170,0.1);
+                border-color: rgba(0,212,170,0.35);
+                color: var(--accent-color);
+            }
+            /* Sidebar */
+            .discussion-sidebar { display: flex; flex-direction: column; gap: 20px; }
+            .sidebar-title {
+                font-size: 18px;
+                font-weight: 600;
+                color: var(--text-color);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin: 0 0 16px 0;
+            }
+            .announce-card {
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-left-width: 3px;
+                border-radius: 12px;
+                padding: 18px 20px;
+                transition: all 0.3s ease;
+            }
+            .announce-card:hover {
+                transform: translateX(3px);
+                box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            }
+            [data-theme="light"] .announce-card:hover {
+                box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+            }
+            .announce-badge {
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                padding: 2px 8px;
+                border-radius: 4px;
+                display: inline-block;
+                margin-bottom: 8px;
+            }
+            .announce-title {
+                font-size: 15px;
+                font-weight: 600;
+                color: var(--text-color);
+                margin: 0 0 4px 0;
+            }
+            .announce-meta {
+                font-size: 12px;
+                color: var(--text-secondary);
+                margin: 0 0 6px 0;
+            }
+            .announce-desc {
+                font-size: 13px;
+                color: var(--text-secondary);
+                line-height: 1.5;
+                margin: 0;
+            }
+            .sidebar-topics { margin-top: 4px; }
+            .sidebar-section-label {
+                font-size: 13px;
+                font-weight: 600;
+                color: var(--text-secondary);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin: 0 0 12px 0;
+            }
+            .topic-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+            .topic-chip {
+                font-size: 12px;
+                font-weight: 500;
+                padding: 5px 12px;
+                border-radius: 20px;
+                background: var(--icon-bg);
+                border: 1px solid var(--border-color);
+                color: var(--text-secondary);
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+            .topic-chip:hover {
+                background: rgba(0,212,170,0.1);
+                border-color: rgba(0,212,170,0.35);
+                color: var(--accent-color);
+            }
+            @media (max-width: 1024px) {
+                .discussion-hub-layout { grid-template-columns: 1fr; }
+                .disc-time { margin-left: 0; }
+            }
+            @media (max-width: 600px) {
+                .discussion-header { flex-direction: column; align-items: flex-start; }
+                .disc-post-inner { gap: 12px; }
+            }
+        </style>
     </section>
+
 
     <!-- Programs & Highlights -->
     <section class="section" style="background: var(--bg-color);">

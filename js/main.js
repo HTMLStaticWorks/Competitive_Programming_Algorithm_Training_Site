@@ -86,6 +86,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (parentLink) parentLink.classList.add('active');
   }
 
+  // Mobile offcanvas active state — highlight current page link
+  const mobileLinks = document.querySelectorAll('.offcanvas-links .mobile-nav-link');
+  mobileLinks.forEach(link => {
+    const linkHref = link.getAttribute('href');
+    if (linkHref === currentPath || (currentPath === '' && linkHref === 'index.html')) {
+      link.style.color = 'var(--accent-color)';
+      link.style.fontWeight = '600';
+    }
+  });
+
   // Back to Top Button
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {

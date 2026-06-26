@@ -122,6 +122,121 @@
             .grid-3 { grid-template-columns: 1fr 1fr !important; }
             .grid-3 > :nth-child(3) { grid-column: span 2; width: calc(50% - 15px); margin: 0 auto; }
         }
+
+        /* Make ✓ checkmarks vivid accent color in all themes */
+        .card ul li::first-letter {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        /* ── Pricing Page Animations ── */
+
+        /* 1. Staggered card entrance */
+        @keyframes cardSlideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .pricing-card-anim {
+            opacity: 0;
+            animation: cardSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .pricing-card-anim:nth-child(1) { animation-delay: 0.1s; }
+        .pricing-card-anim:nth-child(2) { animation-delay: 0.25s; }
+        .pricing-card-anim:nth-child(3) { animation-delay: 0.4s; }
+
+        /* 2. Pro card rotating shimmer border */
+        @keyframes borderSpin {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .pro-card-shimmer {
+            position: relative;
+        }
+        .pro-card-shimmer::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(135deg,
+                var(--accent-color),
+                rgba(0,212,170,0.2),
+                var(--highlight-color),
+                rgba(0,212,170,0.2),
+                var(--accent-color));
+            background-size: 300% 300%;
+            animation: borderSpin 4s linear infinite;
+            z-index: -1;
+            border-radius: var(--border-radius);
+        }
+
+        /* 3. Price number glow pulse */
+        @keyframes priceGlow {
+            0%, 100% { text-shadow: 0 0 0px transparent; }
+            50%       { text-shadow: 0 0 20px rgba(0, 212, 170, 0.4); }
+        }
+        .price-glow {
+            animation: priceGlow 3s ease-in-out infinite;
+        }
+
+        /* 4. Hero badge float */
+        @keyframes badgeFloat {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-4px); }
+        }
+        .small-hero .badge {
+            display: inline-block;
+            animation: badgeFloat 2.5s ease-in-out infinite;
+        }
+
+        /* 5. Scroll-reveal for table & FAQ */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 6. Card hover lift */
+        .pricing-card-anim:not(.pro-card-shimmer):hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border-color: rgba(0,212,170,0.4);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        [data-theme="light"] .pricing-card-anim:not(.pro-card-shimmer):hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        /* 7. CTA button ripple */
+        .btn-primary, .btn-outline {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::after, .btn-outline::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.25) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .btn-primary:hover::after, .btn-outline:hover::after {
+            opacity: 1;
+        }
+
+        /* 8. Most Popular badge pulse */
+        @keyframes popularPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,170,0.5); }
+            50%       { box-shadow: 0 0 0 8px rgba(0,212,170,0); }
+        }
+        .popular-badge {
+            animation: popularPulse 2s ease-in-out infinite;
+        }
     </style>
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
@@ -184,9 +299,9 @@
 
     <section class="section">
         <div class="grid-3">
-            <div class="card">
+            <div class="card pricing-card-anim">
                 <h3>Free Plan</h3>
-                <div style="font-size: 48px; font-weight: 550; margin: 20px 0;">$0 <span style="font-size: 16px; color: var(--text-secondary); font-weight: normal;">/ forever</span></div>
+                <div class="price-glow" style="font-size: 48px; font-weight: 550; margin: 20px 0;">$0 <span style="font-size: 16px; color: var(--text-secondary); font-weight: normal;">/ forever</span></div>
                 <p class="mb-4">Perfect for getting started with competitive programming.</p>
                 <ul style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; flex-grow: 1;">
                     <li>&#10003; Access to 1,000+ basic problems</li>
@@ -196,10 +311,10 @@
                 </ul>
                 <a href="register.html" class="btn btn-outline" style="width: 100%;">Get Started</a>
             </div>
-            <div class="card" style="border-color: var(--accent-color); transform: scale(1.05); z-index: 2; position: relative; overflow: visible;">
-                <div style="position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); background: var(--accent-color); color: #000; padding: 4px 15px; border-radius: 20px; font-weight: 550; font-size: 12px;">MOST POPULAR</div>
+            <div class="card pricing-card-anim pro-card-shimmer" style="border-color: var(--accent-color); transform: scale(1.05); z-index: 2; position: relative; overflow: visible;">
+                <div class="popular-badge" style="position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); background: var(--accent-color); color: #000; padding: 4px 15px; border-radius: 20px; font-weight: 550; font-size: 12px;">MOST POPULAR</div>
                 <h3>Pro Plan</h3>
-                <div style="font-size: 48px; font-weight: 550; margin: 20px 0; color: var(--accent-color);">$15 <span style="font-size: 16px; color: var(--text-secondary); font-weight: normal;">/ month</span></div>
+                <div class="price-glow" style="font-size: 48px; font-weight: 550; margin: 20px 0; color: var(--accent-color);">$15 <span style="font-size: 16px; color: var(--text-secondary); font-weight: normal;">/ month</span></div>
                 <p class="mb-4">Everything you need to reach Grandmaster rating.</p>
                 <ul style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; flex-grow: 1;">
                     <li>&#10003; <strong>All Free features</strong></li>
@@ -210,9 +325,9 @@
                 </ul>
                 <a href="register.html" class="btn btn-primary" style="width: 100%;">Upgrade to Pro</a>
             </div>
-            <div class="card">
+            <div class="card pricing-card-anim">
                 <h3>Elite Competitor</h3>
-                <div style="font-size: 48px; font-weight: 550; margin: 20px 0;">$49 <span style="font-size: 16px; color: var(--text-secondary); font-weight: normal;">/ month</span></div>
+                <div class="price-glow" style="font-size: 48px; font-weight: 550; margin: 20px 0; color: var(--accent-color);">$49 <span style="font-size: 16px; color: var(--text-secondary); font-weight: normal;">/ month</span></div>
                 <p class="mb-4">For serious competitors aiming for IOI and ICPC.</p>
                 <ul style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; flex-grow: 1;">
                     <li>&#10003; <strong>All Pro features</strong></li>
@@ -221,7 +336,7 @@
                     <li>&#10003; Direct hiring partner referrals</li>
                     <li>&#10003; Private mock interviews</li>
                 </ul>
-                <a href="register.html" class="btn btn-highlight" style="width: 100%;">Become Elite</a>
+                <a href="register.html" class="btn btn-outline" style="width: 100%;">Become Elite</a>
             </div>
         </div>
     </section>
@@ -235,16 +350,16 @@
                         <th style="width: 40%;">Feature</th>
                         <th style="text-align: center;">Free</th>
                         <th style="text-align: center; color: var(--accent-color);">Pro</th>
-                        <th style="text-align: center; color: var(--highlight-color);">Elite</th>
+                        <th style="text-align: center; color: var(--accent-color);">Elite</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr><td>Basic Problem Set</td><td style="text-align: center;">&#10003;</td><td style="text-align: center;">&#10003;</td><td style="text-align: center;">&#10003;</td></tr>
                     <tr><td>Live Contests</td><td style="text-align: center;">&#10003;</td><td style="text-align: center;">&#10003;</td><td style="text-align: center;">&#10003;</td></tr>
-                    <tr><td>Editorial Solutions</td><td style="text-align: center; color: var(--highlight-color);">&#10007;</td><td style="text-align: center;">&#10003;</td><td style="text-align: center;">&#10003;</td></tr>
-                    <tr><td>Video Courses</td><td style="text-align: center; color: var(--highlight-color);">&#10007;</td><td style="text-align: center;">&#10003;</td><td style="text-align: center;">&#10003;</td></tr>
-                    <tr><td>Hiring Referrals</td><td style="text-align: center; color: var(--highlight-color);">&#10007;</td><td style="text-align: center; color: var(--highlight-color);">&#10007;</td><td style="text-align: center;">&#10003;</td></tr>
-                    <tr><td>1-on-1 Mentorship</td><td style="text-align: center; color: var(--highlight-color);">&#10007;</td><td style="text-align: center; color: var(--highlight-color);">&#10007;</td><td style="text-align: center;">&#10003;</td></tr>
+                    <tr><td>Editorial Solutions</td><td style="text-align: center; opacity: 0.4;">&#10007;</td><td style="text-align: center;">&#10003;</td><td style="text-align: center;">&#10003;</td></tr>
+                    <tr><td>Video Courses</td><td style="text-align: center; opacity: 0.4;">&#10007;</td><td style="text-align: center;">&#10003;</td><td style="text-align: center;">&#10003;</td></tr>
+                    <tr><td>Hiring Referrals</td><td style="text-align: center; opacity: 0.4;">&#10007;</td><td style="text-align: center; opacity: 0.4;">&#10007;</td><td style="text-align: center;">&#10003;</td></tr>
+                    <tr><td>1-on-1 Mentorship</td><td style="text-align: center; opacity: 0.4;">&#10007;</td><td style="text-align: center; opacity: 0.4;">&#10007;</td><td style="text-align: center;">&#10003;</td></tr>
                 </tbody>
             </table>
         </div>
@@ -361,6 +476,24 @@
 
     <script src="js/main.js"></script>
     <button class="back-to-top" id="backToTop" title="Go to top"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+
+    <script>
+        // Scroll-reveal for Feature Comparison, Enterprise, and FAQ sections
+        document.querySelectorAll('section.section').forEach((el, i) => {
+            if (i > 0) el.classList.add('reveal-on-scroll');
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+    </script>
 </body>
 </html>
 

@@ -76,8 +76,8 @@
                 <h3 class="card-title">Graph Master</h3>
                 <p class="card-desc">Solve 100 Hard Graph Theory Problems.</p>
             </div>
-            <div class="card text-center" style="align-items: center; filter: grayscale(1); opacity: 0.5;">
-                <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(45deg, #FFB703, var(--highlight-color)); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <div class="card text-center" style="align-items: center; border-color: rgba(255, 183, 3, 0.5);">
+                <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(45deg, #FFB703, var(--highlight-color)); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(255, 183, 3, 0.2);">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>
                 <h3 class="card-title">DP Grandmaster</h3>
@@ -107,7 +107,7 @@
             <div class="medal-card gold-medal">
                 <div class="medal-glow"></div>
                 <div class="medal-graphic">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="url(#goldGrad)" stroke="#FFE066" stroke-width="1.5"><defs><linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFD700" /><stop offset="100%" stop-color="#FDB931" /></linearGradient></defs><circle cx="12" cy="12" r="10"/><path d="M12 8l2 3 3 .5-2 2 .5 3-3-2-3 2 .5-3-2-2 3-.5z" fill="#FFF" stroke="none"/></svg>
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--accent-color)" stroke="var(--accent-color)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8l2 3 3 .5-2 2 .5 3-3-2-3 2 .5-3-2-2 3-.5z" fill="#fff" stroke="none"/></svg>
                 </div>
                 <div class="medal-info">
                     <h3 class="medal-count">3</h3>
@@ -119,7 +119,7 @@
             <div class="medal-card silver-medal">
                 <div class="medal-glow"></div>
                 <div class="medal-graphic">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="url(#silverGrad)" stroke="#FFFFFF" stroke-width="1.5"><defs><linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E0E0E0" /><stop offset="100%" stop-color="#9E9E9E" /></linearGradient></defs><circle cx="12" cy="12" r="10"/><path d="M12 8l2 3 3 .5-2 2 .5 3-3-2-3 2 .5-3-2-2 3-.5z" fill="#FFF" stroke="none"/></svg>
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--accent-color)" stroke="var(--accent-color)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8l2 3 3 .5-2 2 .5 3-3-2-3 2 .5-3-2-2 3-.5z" fill="#fff" stroke="none"/></svg>
                 </div>
                 <div class="medal-info">
                     <h3 class="medal-count">12</h3>
@@ -131,7 +131,7 @@
             <div class="medal-card bronze-medal">
                 <div class="medal-glow"></div>
                 <div class="medal-graphic">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="url(#bronzeGrad)" stroke="#FFB380" stroke-width="1.5"><defs><linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#CD7F32" /><stop offset="100%" stop-color="#8B4513" /></linearGradient></defs><circle cx="12" cy="12" r="10"/><path d="M12 8l2 3 3 .5-2 2 .5 3-3-2-3 2 .5-3-2-2 3-.5z" fill="#FFF" stroke="none"/></svg>
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--accent-color)" stroke="var(--accent-color)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8l2 3 3 .5-2 2 .5 3-3-2-3 2 .5-3-2-2 3-.5z" fill="#fff" stroke="none"/></svg>
                 </div>
                 <div class="medal-info">
                     <h3 class="medal-count">24</h3>
@@ -917,13 +917,18 @@
             z-index: 0;
         }
 
-        .gold-medal .medal-glow { background: rgba(255, 215, 0, 0.3); }
-        .silver-medal .medal-glow { background: rgba(192, 192, 192, 0.3); }
-        .bronze-medal .medal-glow { background: rgba(205, 127, 50, 0.3); }
+        .gold-medal .medal-glow { background: rgba(0, 212, 170, 0.35); }
+        .silver-medal .medal-glow { background: rgba(0, 212, 170, 0.35); }
+        .bronze-medal .medal-glow { background: rgba(0, 212, 170, 0.35); }
+
+        .medal-card {
+            border-color: rgba(0, 212, 170, 0.3);
+        }
 
         .medal-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(255,255,255,0.1);
+            border-color: rgba(0, 212, 170, 0.6);
+            box-shadow: 0 15px 35px rgba(0, 212, 170, 0.12);
         }
         
         [data-theme="light"] .medal-card:hover {
@@ -966,9 +971,12 @@
             color: var(--text-color);
         }
         
-        .gold-medal .medal-type { color: #FFD700; }
-        .silver-medal .medal-type { color: #E0E0E0; }
-        .bronze-medal .medal-type { color: #CD7F32; }
+        .gold-medal .medal-type { color: var(--accent-color); }
+        .silver-medal .medal-type { color: var(--accent-color); }
+        .bronze-medal .medal-type { color: var(--accent-color); }
+
+        .medal-count { color: var(--accent-color); }
+
 
         .medal-desc {
             font-size: 13px;
