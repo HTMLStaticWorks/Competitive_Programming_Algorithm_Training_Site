@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoPro | Community</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <div class="overlay"></div>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand" style="display: inline-flex; align-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; flex-shrink: 0;"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Algo<span>Pro</span></a>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="index.html" class="active" style="display: flex; align-items: center; gap: 4px;">Home <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="nav-dropdown-content">
+                    <a href="index.html">Home 1</a>
+                    <a href="home-2.html">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html">About</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="community.html">Community</a>
+            <a href="courses.html">Courses</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-actions" style="display:flex; gap:15px; align-items:center;">
+            <button class="nav-icon-btn rtl-toggle" title="Toggle RTL">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 4l4 4-4 4M7 20l-4-4 4-4M21 8H7M3 16h14"/></svg>
+            </button>
+            <button class="nav-icon-btn theme-toggle" title="Toggle Theme">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </button>
+            <a href="dashboard.html" title="Dashboard" class="nav-icon-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+            </a>
+            <a href="login.html" class="btn btn-primary" style="padding:8px 20px;">Login</a>
+        </div>
+        <button class="hamburger">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </nav>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas">
+        <button class="offcanvas-close">&times;</button>
+        <a href="index.html" class="navbar-brand mb-4">Algo<span>Pro</span></a>
+        <div class="offcanvas-links"><a href="index.html">Home 1</a><a href="home-2.html">Home 2</a><a href="about.html">About</a><a href="achievements.html">Achievements</a><a href="community.html">Community</a><a href="courses.html">Courses</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div>
+        <div class="offcanvas-actions" style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 15px;">
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <button class="nav-icon-btn rtl-toggle" title="Toggle RTL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 4l4 4-4 4M7 20l-4-4 4-4M21 8H7M3 16h14"/></svg></button>
+                <button class="nav-icon-btn theme-toggle" title="Toggle Theme"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+                <a href="dashboard.html" class="nav-icon-btn" title="Dashboard"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg></a>
+            </div>
+            <a href="login.html" class="btn btn-primary" style="text-align: center;">Login</a>
+        </div>
+    </div>
+
+    <section class="small-hero">
+        <div class="badge badge-medium mb-4">Connect</div>
+        <h1>Developer Community</h1>
+        <p>Discuss algorithms, find teammates for ICPC, and learn from grandmasters.</p>
+    </section>
+
+    <!-- Discussion Hub -->
+    <section class="section">
+        <div class="grid-3" style="grid-template-columns: 2fr 1fr;">
+            <div>
+                <h2 class="mb-4">Discussion Hub</h2>
+                <div class="card mb-4" style="padding: 20px; height: auto;">
+                    <div style="display: flex; gap: 15px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--highlight-color);"></div>
+                        <div>
+                            <h4 style="margin: 0;">tourist</h4>
+                            <p class="caption">2 hours ago in <a href="#" style="color: var(--accent-color);">Global Round 142 Discussion</a></p>
+                            <p style="margin-top: 10px;">For problem D, you can optimize the DP state by observing that the maximum value never exceeds N. This reduces complexity to O(N log N).</p>
+                            <div style="display: flex; gap: 15px; margin-top: 10px; color: var(--text-secondary); font-size: 14px;">
+                                <span style="color: var(--accent-color);">â–² 342</span>
+                                <span>ðŸ’¬ 45 Replies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-4" style="padding: 20px; height: auto;">
+                    <div style="display: flex; gap: 15px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #00D4AA;"></div>
+                        <div>
+                            <h4 style="margin: 0;">algo_master</h4>
+                            <p class="caption">5 hours ago in <a href="#" style="color: var(--accent-color);">General Algorithms</a></p>
+                            <p style="margin-top: 10px;">What is the most intuitive way to understand Heavy-Light Decomposition? I've read the standard tutorials but the implementation feels bulky.</p>
+                            <div style="display: flex; gap: 15px; margin-top: 10px; color: var(--text-secondary); font-size: 14px;">
+                                <span style="color: var(--accent-color);">â–² 89</span>
+                                <span>ðŸ’¬ 12 Replies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h2 class="mb-4">Contest Announcements</h2>
+                <div class="card mb-4" style="border-left: 4px solid #FFB703; height: auto;">
+                    <h4 style="margin-bottom: 5px;">Weekly Sprint 90</h4>
+                    <p class="caption mb-2">Starts in 2 days</p>
+                    <p style="font-size: 14px;">Div. 2 and Div. 3 rated round. 6 problems, 2 hours.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--accent-color); height: auto;">
+                    <h4 style="margin-bottom: 5px;">Quant Systems Hiring Hackathon</h4>
+                    <p class="caption mb-2">Starts in 1 week</p>
+                    <p style="font-size: 14px;">Top 50 win interviews. Open to all users.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs & Highlights -->
+    <section class="section" style="background: var(--bg-color);">
+        <div class="grid-3 odd-cards">
+            <div class="card">
+                <h3 class="card-title">Coding Clubs</h3>
+                <p class="card-desc">Join university-specific or regional coding clubs. Organize local meetups and internal leaderboards.</p>
+                <div class="card-footer"><a href="#" class="btn btn-outline" style="width:100%">Find a Club</a></div>
+            </div>
+            <div class="card">
+                <h3 class="card-title">Mentor Programs</h3>
+                <p class="card-desc">Get matched with a Grandmaster for 1-on-1 code reviews and strategic contest planning.</p>
+                <div class="card-footer"><a href="#" class="btn btn-outline" style="width:100%">Apply for Mentorship</a></div>
+            </div>
+            <div class="card">
+                <h3 class="card-title">Community Highlights</h3>
+                <p class="card-desc">Read interviews with top performers, editorial breakdowns, and success stories.</p>
+                <div class="card-footer"><a href="#" class="btn btn-outline" style="width:100%">Read Blog</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Hackathons -->
+    <section class="section" style="position: relative; overflow: hidden; padding-top: 60px; padding-bottom: 60px;">
+        <div class="community-glow-bg"></div>
+        <div class="unique-hackathon-card">
+            <div class="hackathon-content">
+                <div class="badge badge-medium mb-4" style="background: rgba(0, 212, 170, 0.1); color: var(--accent-color); border: 1px solid var(--accent-color);">Live Events</div>
+                <h2 style="font-size: clamp(32px, 4vw, 48px); margin-bottom: 20px;">Global Virtual Hackathons</h2>
+                <p style="font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; max-width: 500px;">
+                    Compete with the best minds worldwide. Build innovative algorithmic solutions in 48-hour sprints and win exclusive prizes, mentorships, and bragging rights.
+                </p>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-start; width: 100%;">
+                    <div class="stat-box">
+                        <span class="stat-num">50+</span>
+                        <span class="stat-label">Yearly Events</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-num">$100k</span>
+                        <span class="stat-label">Prize Pool</span>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary mt-4" style="padding: 14px 32px; font-size: 18px; width: fit-content;">Register for Next Event</a>
+            </div>
+            <div class="hackathon-image-wrapper">
+                <div class="hackathon-image-backdrop"></div>
+                <img src="images/virtual_hackathon.png" alt="Virtual Hackathon" class="hackathon-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Source Contributions -->
+    <section class="section" style="background: var(--bg-color); padding-top: 60px; padding-bottom: 100px;">
+        <div class="unique-opensource-layout">
+            <div class="opensource-image-container">
+                <div class="animated-border-box">
+                    <img src="images/open_source_labs.png" alt="Open Source Code Labs" class="opensource-image">
+                </div>
+                <div class="floating-badge badge-1">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-color);"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <span>1,200+ Repos</span>
+                </div>
+                <div class="floating-badge badge-2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--highlight-color);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>Top Contributors</span>
+                </div>
+            </div>
+            <div class="opensource-content">
+                <h2 style="font-size: clamp(32px, 4vw, 44px); margin-bottom: 20px;">Open Source Code Labs</h2>
+                <p style="font-size: 18px; color: var(--text-secondary); margin-bottom: 30px;">
+                    Collaborate on large-scale algorithmic libraries and tools. Level up your system design and coding standards by contributing to impactful community projects reviewed by industry experts.
+                </p>
+                <ul class="opensource-features">
+                    <li>
+                        <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span>Real-world codebase exposure</span>
+                    </li>
+                    <li>
+                        <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span>Peer code reviews & mentorship</span>
+                    </li>
+                    <li>
+                        <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span>Build an impressive portfolio</span>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-outline mt-4" style="padding: 14px 32px; font-size: 18px; border-color: var(--accent-color); color: var(--accent-color); width: fit-content;">Explore Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Unique Animations & Layouts for Community Page */
+        .community-glow-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(0,212,170,0.15) 0%, rgba(11,17,32,0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: pulse-glow 6s infinite alternate ease-in-out;
+        }
+        
+        [data-theme="light"] .community-glow-bg {
+            background: radial-gradient(circle, rgba(0,212,170,0.05) 0%, rgba(255,255,255,0) 70%);
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        .unique-hackathon-card {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(20px, 4vw, 40px);
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: clamp(30px, 5vw, 60px);
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        
+        [data-theme="light"] .unique-hackathon-card {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .unique-hackathon-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--highlight-color));
+        }
+
+        .stat-box {
+            display: flex;
+            flex-direction: column;
+            background: var(--icon-bg);
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            min-width: 140px;
+        }
+
+        .stat-num {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .hackathon-image-wrapper {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hackathon-image-backdrop {
+            position: absolute;
+            top: 10%; right: 10%; bottom: 10%; left: 10%;
+            background: var(--accent-color);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            animation: spin-slow 10s linear infinite;
+        }
+
+        @keyframes spin-slow {
+            100% { transform: rotate(360deg); }
+        }
+
+        .hackathon-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            transform: rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float-hackathon 4s ease-in-out infinite;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+        }
+        
+        [data-theme="light"] .hackathon-image {
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+        }
+
+        .unique-hackathon-card:hover .hackathon-image {
+            animation: none;
+            transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+        }
+
+        @keyframes float-hackathon {
+            0%, 100% { transform: translateY(0) rotateY(-15deg) rotateX(5deg); }
+            50% { transform: translateY(-15px) rotateY(-15deg) rotateX(5deg); }
+        }
+
+        /* Open Source Layout */
+        .unique-opensource-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(40px, 5vw, 60px);
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .opensource-image-container {
+            position: relative;
+        }
+
+        .animated-border-box {
+            position: relative;
+            padding: 8px;
+            border-radius: 24px;
+            background: linear-gradient(45deg, var(--accent-color), var(--highlight-color), var(--primary-color));
+            background-size: 200% 200%;
+            animation: gradient-border 5s ease infinite;
+        }
+
+        @keyframes gradient-border {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .opensource-image {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            display: block;
+            background: var(--card-bg);
+            border: 4px solid var(--card-bg);
+        }
+
+        .floating-badge {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+            color: var(--text-color);
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .badge-1 {
+            top: -20px;
+            right: -20px;
+            animation: float-badge 3s ease-in-out infinite;
+        }
+
+        .badge-2 {
+            bottom: -20px;
+            left: -20px;
+            animation: float-badge 4s ease-in-out infinite reverse;
+        }
+
+        @keyframes float-badge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .opensource-features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 0;
+        }
+
+        .opensource-features li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(0,212,170,0.1);
+            color: var(--accent-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 992px) {
+            .unique-hackathon-card, .unique-opensource-layout {
+                grid-template-columns: 1fr;
+            }
+            .hackathon-content, .opensource-content {
+                order: 2;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .hackathon-content p, .opensource-content p {
+                text-align: center;
+            }
+            .hackathon-content > div {
+                justify-content: center !important;
+            }
+            .hackathon-image-wrapper, .opensource-image-container {
+                order: 1;
+                margin-bottom: 30px;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .opensource-features li {
+                justify-content: flex-start;
+                text-align: left;
+            }
+            .badge-1 { right: 10px; top: -10px; }
+            .badge-2 { left: 10px; bottom: -10px; }
+        }
+
+        @media (max-width: 768px) {
+            /* Hero */
+            .small-hero { text-align: center; }
+
+            /* Section headers */
+            .section-header { text-align: center; }
+
+            /* Discussion Hub - stack columns, center text */
+            .grid-3[style*="2fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            .section h2 { text-align: center; }
+
+            /* Discussion posts - center avatar + text */
+            .card > div[style*="display: flex; gap: 15px"] {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .card > div[style*="display: flex; gap: 15px"] > div:first-child {
+                flex-shrink: 0;
+            }
+            /* Vote/reply row stays flex */
+            div[style*="display: flex; gap: 15px; margin-top: 10px"] {
+                justify-content: center;
+            }
+
+            /* Program cards center */
+            .card { text-align: center; }
+            .card .card-title, .card .card-desc { text-align: center; }
+
+            /* Hackathon section */
+            .unique-hackathon-card { padding: 30px 20px; }
+            .hackathon-content { align-items: center !important; text-align: center !important; }
+            .hackathon-content p { max-width: 100% !important; }
+            .hackathon-content > div[style*="display: flex; gap: 20px"] {
+                justify-content: center !important;
+            }
+            .hackathon-content .btn { align-self: center; width: 100%; text-align: center; }
+            .hackathon-image { transform: none; animation: none; }
+
+            /* Open Source section */
+            .opensource-content { align-items: center !important; text-align: center !important; }
+            .opensource-content h2 { text-align: center; }
+            /* Center the list block but keep rows left-aligned */
+            .opensource-features {
+                align-self: center;
+                display: inline-flex;
+                flex-direction: column;
+                gap: 15px;
+                text-align: left;
+                width: auto;
+            }
+            .opensource-features li {
+                justify-content: flex-start !important;
+                text-align: left !important;
+            }
+            .opensource-content .btn { align-self: center; width: 100%; text-align: center; }
+
+            /* Floating badges - hide on very small screens to avoid overlap */
+            .badge-1, .badge-2 { display: none; }
+        }
+        /* Tablet responsive fixes for 3-card grids */
+        @media screen and (min-width: 700px) and (max-width: 1024px) {
+            .odd-cards { grid-template-columns: 1fr 1fr !important; }
+            .odd-cards > :nth-child(3) { grid-column: span 2; width: calc(50% - 15px); margin: 0 auto; }
+        }
+    </style>
+
+<!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="navbar-brand mb-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    Algo<span>Pro</span>
+                </a>
+                <p style="margin-top: 20px; max-width: 300px;">The ultimate platform for competitive programming, algorithmic mastery, and interview preparation.</p>
+                <div class="footer-social" style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="#" class="nav-icon-btn" title="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                    <a href="#" class="nav-icon-btn" title="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.45-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg></a>
+                    <a href="#" class="nav-icon-btn" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <div class="footer-links">
+                    <a href="courses.html">Courses</a>
+                    <a href="#">Problem Set</a>
+                    <a href="#">Leaderboard</a>
+                    <a href="contests.html">Contests</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Community</h4>
+                <div class="footer-links">
+                    <a href="community.html">Discussions</a>
+                    <a href="#">Blog</a>
+                    <a href="achievements.html">Achievements</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AlgoPro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <button class="back-to-top" id="backToTop" title="Go to top"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+</body>
+</html>
+

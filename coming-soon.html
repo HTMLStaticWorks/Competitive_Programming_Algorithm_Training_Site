@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoPro | Coming Soon</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <style>
+        .cs-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #0B1120 0%, #151E2E 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .cs-container::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,212,170,0.1) 0%, rgba(0,0,0,0) 70%);
+            animation: rotateBg 20s linear infinite;
+        }
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cs-container">
+        <div style="position: relative; z-index: 2;">
+            <a href="index.html" class="navbar-brand" style="display: inline-flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 40px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; flex-shrink: 0;"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Algo<span>Pro</span></a>
+            <h1 style="font-size: clamp(48px, 5vw, 72px); margin-bottom: 20px;">Compiling Feature...</h1>
+            <p style="font-size: 20px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">
+                Our engineers are optimizing the algorithms for this new section. It will be deployed to production soon.
+            </p>
+            
+            <div style="max-width: 400px; margin: 0 auto; background: var(--card-bg); padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); display: flex;">
+                <input type="email" placeholder="Notify me when it's ready" style="flex: 1; background: transparent; border: none; padding: 10px; color: #fff; outline: none;">
+                <button class="btn btn-primary" style="border-radius: 6px;">Subscribe</button>
+            </div>
+            
+            <div style="margin-top: 60px;">
+                <a href="index.html" style="color: var(--text-secondary); text-decoration: underline;">← Back to Homepage</a>
+            </div>
+        </div>
+    </div>
+    <button class="back-to-top" id="backToTop" title="Go to top"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+</body>
+</html>

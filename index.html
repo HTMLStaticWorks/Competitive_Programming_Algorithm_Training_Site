@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoPro | Competitive Programming & Algorithm Training</title>
+    <meta name="description" content="Master Competitive Programming Like The Top 1%. Structured learning paths, live contests, real-time judging, and performance analytics designed to accelerate coding excellence.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <style>
+        /* Home 1 Specific Animations */
+        .algo-engine-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            background-image: url('images/hero_1.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        }
+
+        [dir="rtl"] .algo-engine-container {
+            right: auto;
+            left: 0;
+            mask-image: linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        }
+
+        .algo-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        .algo-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--accent-color));
+            height: 2px;
+            transform-origin: left center;
+            opacity: 0.5;
+        }
+
+        /* Generated nodes animation */
+        @keyframes flowRight {
+            0% { transform: translateX(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(300px) scale(0.5); opacity: 0; }
+        }
+
+        /* Setup layout specifics */
+        .hero {
+            background: linear-gradient(90deg, #0B1120 40%, transparent 100%);
+        }
+        
+        /* Force Dark Theme text in Hero section always */
+        .hero h1, .hero p, .hero .subheading { color: #ffffff !important; }
+        .hero .btn-outline { color: #ffffff !important; border-color: rgba(255,255,255,0.3) !important; }
+        .hero .btn-outline:hover { border-color: #ffffff !important; background: rgba(255,255,255,0.1) !important; }
+        
+        .roadmap-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: 40px 0;
+        }
+        .roadmap-container::after {
+            content: ''; position: absolute; width: 4px;
+            background: linear-gradient(to bottom, transparent, var(--accent-color), transparent);
+            top: 0; bottom: 0; left: 50%; margin-left: -2px; z-index: 1; border-radius: 2px;
+        }
+        .roadmap-card {
+            padding: 10px 40px; position: relative; width: 50%; z-index: 2;
+        }
+        .roadmap-card:nth-child(odd) { left: 0; text-align: right; }
+        .roadmap-card:nth-child(even) { left: 50%; }
+        .roadmap-icon {
+            position: absolute; width: 40px; height: 40px; right: -20px;
+            background: var(--card-bg); border: 3px solid var(--accent-color); border-radius: 50%;
+            top: 15px; z-index: 3; box-shadow: 0 0 15px var(--accent-color);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-color); font-weight: bold; font-size: 18px;
+        }
+        .roadmap-card:nth-child(even) .roadmap-icon { left: -20px; }
+        .roadmap-content {
+            padding: 30px; background: var(--card-bg); border-radius: 15px;
+            border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease; position: relative;
+        }
+        .roadmap-content:hover {
+            transform: translateY(-5px); border-color: var(--accent-color);
+            box-shadow: 0 15px 40px rgba(var(--accent-color-rgb, 0, 212, 170), 0.2);
+        }
+        .roadmap-card:nth-child(odd) .roadmap-content { border-right: 4px solid var(--accent-color); }
+        .roadmap-card:nth-child(even) .roadmap-content { border-left: 4px solid var(--accent-color); }
+        
+        /* Mobile fixes */
+        @media screen and (max-width: 768px) {
+            .roadmap-container::after { left: 31px; }
+            .roadmap-card { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .roadmap-card:nth-child(even) { left: 0%; }
+            .roadmap-card:nth-child(odd) { text-align: left; }
+            .roadmap-icon, .roadmap-card:nth-child(even) .roadmap-icon { left: 11px; right: auto; }
+            .roadmap-card:nth-child(odd) .roadmap-content, .roadmap-card:nth-child(even) .roadmap-content {
+                border-right: 1px solid var(--border-color); border-left: 4px solid var(--accent-color);
+            }
+        }
+        
+        /* RTL overrides */
+        [dir="rtl"] .roadmap-card:nth-child(odd) { text-align: left; }
+        [dir="rtl"] .roadmap-card:nth-child(odd) .roadmap-content { border-right: 1px solid var(--border-color); border-left: 4px solid var(--accent-color); }
+        [dir="rtl"] .roadmap-card:nth-child(even) .roadmap-content { border-left: 1px solid var(--border-color); border-right: 4px solid var(--accent-color); }
+        [dir="rtl"] .roadmap-icon { right: auto; left: -20px; }
+        [dir="rtl"] .roadmap-card:nth-child(even) .roadmap-icon { left: auto; right: -20px; }
+        @media screen and (max-width: 768px) {
+            [dir="rtl"] .roadmap-container::after { left: auto; right: 31px; }
+            [dir="rtl"] .roadmap-card { padding-left: 25px; padding-right: 70px; }
+            [dir="rtl"] .roadmap-card:nth-child(odd) { text-align: right; }
+            [dir="rtl"] .roadmap-icon, [dir="rtl"] .roadmap-card:nth-child(even) .roadmap-icon { left: auto; right: 11px; }
+            [dir="rtl"] .roadmap-card:nth-child(odd) .roadmap-content, [dir="rtl"] .roadmap-card:nth-child(even) .roadmap-content {
+                border-left: 1px solid var(--border-color); border-right: 4px solid var(--accent-color);
+            }
+        }
+        
+        /* Roadmap Animations */
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+        
+        .roadmap-card { opacity: 0; }
+        .roadmap-card.visible:nth-child(odd) { animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .roadmap-card.visible:nth-child(even) { animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .roadmap-icon { opacity: 0; }
+        .roadmap-card.visible .roadmap-icon { animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
+        
+        @media screen and (max-width: 768px) {
+            .roadmap-card.visible:nth-child(even) { animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        }
+        
+        /* RTL animation overrides */
+        [dir="rtl"] .roadmap-card.visible:nth-child(odd) { animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        [dir="rtl"] .roadmap-card.visible:nth-child(even) { animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @media screen and (max-width: 768px) {
+            [dir="rtl"] .roadmap-card.visible:nth-child(odd), [dir="rtl"] .roadmap-card.visible:nth-child(even) { animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        }
+        
+        /* Challenge Grid Redesign */
+        .challenge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .challenge-card { position: relative; border-radius: 20px; overflow: hidden; background: var(--card-bg); border: 1px solid var(--border-color); aspect-ratio: 4/5; display: flex; align-items: flex-end; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer; }
+        .challenge-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; overflow: hidden; }
+        .challenge-bg img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .challenge-card:hover .challenge-bg img { transform: scale(1.1); }
+        .challenge-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); transition: all 0.4s ease; }
+        .challenge-card:hover .challenge-bg::after { background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0.4) 100%); }
+        .challenge-content { position: relative; z-index: 2; padding: 30px; width: 100%; }
+        .challenge-content .card-title { color: #ffffff; margin-bottom: 0; transition: transform 0.4s ease; font-size: 24px; }
+        .challenge-details { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform: translateY(20px); }
+        .challenge-details p { color: rgba(255,255,255,0.8); margin-top: 15px; font-size: 15px; }
+        .challenge-card:hover .challenge-details { max-height: 200px; opacity: 1; transform: translateY(0); }
+        .challenge-card:hover .challenge-content .card-title { color: var(--accent-color); }
+        @media screen and (max-width: 992px) { 
+            .challenge-grid { grid-template-columns: repeat(2, 1fr); } 
+            .challenge-card:last-child { grid-column: span 2; width: calc(50% - 15px); margin: 0 auto; }
+        }
+        @media screen and (max-width: 767px) {
+            .challenge-grid { grid-template-columns: 1fr; }
+            .challenge-card:last-child { grid-column: span 1; width: 100%; margin: 0; }
+            .challenge-card { aspect-ratio: unset; height: 300px; }
+            .challenge-bg::after { background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 60%, transparent 100%); }
+            .challenge-card .challenge-details { max-height: 0; opacity: 0; transform: translateY(20px); }
+            .challenge-card.active .challenge-details { max-height: 250px; opacity: 1; transform: translateY(0); }
+            .challenge-card.active { height: auto; }
+        }
+        
+        /* Elite Community Marquee & Banner */
+        .community-marquee-wrapper { position: relative; width: 100%; overflow: hidden; padding: 20px 0; margin-bottom: 50px; z-index: 2; }
+        .community-marquee-wrapper::before { content:''; position:absolute; top:0; left:0; bottom:0; width:150px; background:linear-gradient(90deg, var(--bg-color), transparent); z-index:3; pointer-events:none; }
+        .community-marquee-wrapper::after { content:''; position:absolute; top:0; right:0; bottom:0; width:150px; background:linear-gradient(-90deg, var(--bg-color), transparent); z-index:3; pointer-events:none; }
+        .community-marquee { display: flex; gap: 30px; width: max-content; animation: marqueeScroll 30s linear infinite; }
+        .community-marquee:hover { animation-play-state: paused; }
+        @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 15px)); } }
+        .marquee-card { width: 400px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .marquee-card:hover { border-color: var(--accent-color); transform: scale(1.02); }
+        .community-banner { max-width: 1200px; margin: 0 auto; background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(11, 17, 32, 0.9) 100%); border: 1px solid var(--accent-color); border-radius: 30px; padding: 60px; text-align: center; box-shadow: 0 10px 40px rgba(0, 212, 170, 0.1); position: relative; overflow: hidden; }
+        [data-theme="light"] .community-banner { background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%); }
+        .community-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-color), transparent); }
+        [dir="rtl"] .community-marquee { animation: marqueeScrollRTL 30s linear infinite; }
+        [dir="rtl"] .community-marquee-wrapper::before { background:linear-gradient(-90deg, var(--bg-color), transparent); }
+        [dir="rtl"] .community-marquee-wrapper::after { background:linear-gradient(90deg, var(--bg-color), transparent); }
+        @keyframes marqueeScrollRTL { 0% { transform: translateX(0); } 100% { transform: translateX(calc(50% + 15px)); } }
+        /* Hero Section Responsive Fixes */
+        @media screen and (max-width: 1024px) {
+            .hero { text-align: center; justify-content: center; }
+            .hero-content { display: flex; flex-direction: column; align-items: center; margin: 0 auto; z-index: 10; }
+            .hero-actions { justify-content: center; }
+        }
+        @media screen and (max-width: 768px) {
+            .hero { min-height: auto !important; padding-top: 140px !important; padding-bottom: 80px !important; }
+            .hero-actions { flex-direction: column; width: 100%; gap: 15px; }
+            .hero-actions .btn { width: 100%; box-sizing: border-box; margin: 0; }
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+
+    <!-- Overlay for Mobile Menu -->
+    <div class="overlay"></div>
+
+        <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand" style="display: inline-flex; align-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; flex-shrink: 0;"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Algo<span>Pro</span></a>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="index.html" class="active" style="display: flex; align-items: center; gap: 4px;">Home <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <div class="nav-dropdown-content">
+                    <a href="index.html">Home 1</a>
+                    <a href="home-2.html">Home 2</a>
+                </div>
+            </div>
+            <a href="about.html">About</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="community.html">Community</a>
+            <a href="courses.html">Courses</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-actions" style="display:flex; gap:15px; align-items:center;">
+            <button class="nav-icon-btn rtl-toggle" title="Toggle RTL">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 4l4 4-4 4M7 20l-4-4 4-4M21 8H7M3 16h14"/></svg>
+            </button>
+            <button class="nav-icon-btn theme-toggle" title="Toggle Theme">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </button>
+            <a href="dashboard.html" title="Dashboard" class="nav-icon-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+            </a>
+            <a href="login.html" class="btn btn-primary" style="padding:8px 20px;">Login</a>
+        </div>
+        <button class="hamburger">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </nav>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas">
+        <button class="offcanvas-close">&times;</button>
+        <a href="index.html" class="navbar-brand mb-4">Algo<span>Pro</span></a>
+        <div class="offcanvas-links">
+            <a href="index.html">Home 1</a>
+            <a href="home-2.html">Home 2</a>
+            <a href="about.html">About</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="community.html">Community</a>
+            <a href="courses.html">Courses</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="offcanvas-actions" style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 15px;">
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <button class="rtl-toggle" title="Toggle RTL" style="background:none;border:none;color:var(--text-color);cursor:pointer;display:flex;align-items:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h14"/><path d="M13 8l4 4-4 4"/><path d="M11 4v16"/><path d="M7 4v16"/></svg></button>
+                <button class="theme-toggle" title="Toggle Theme" style="background:none;border:none;color:var(--text-color);cursor:pointer;display:flex;align-items:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+            </div>
+            <a href="dashboard.html" class="btn btn-outline" style="text-align: center;">Dashboard</a>
+            <a href="login.html" class="btn btn-primary" style="text-align: center;">Login</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="algo-engine-container">
+            <!-- Dynamic flow nodes will be added by JS, or keep the image static as the background -->
+            <div class="algo-node anim-node" style="top:30%; left:20%;"></div>
+            <div class="algo-node anim-node" style="top:60%; left:40%; animation-delay: 0.5s;"></div>
+            <div class="algo-node anim-node" style="top:40%; left:70%; animation-delay: 1s;"></div>
+            <div class="algo-line" style="top:30%; left:20%; width: 20%; transform: rotate(45deg);"></div>
+            <div class="algo-line" style="top:60%; left:40%; width: 30%; transform: rotate(-30deg);"></div>
+        </div>
+        <div class="hero-content">
+            <div class="subheading mb-4">Algorithm Flow Engine</div>
+            <h1>Master Competitive Programming Like The Top 1%</h1>
+            <p style="font-size: 20px; max-width: 650px;">Structured learning paths, live contests, real-time judging, and performance analytics designed to accelerate coding excellence.</p>
+            <div class="hero-actions">
+                <a href="courses.html" class="btn btn-primary">Start Learning</a>
+                <a href="#" class="btn btn-outline">View Challenges</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Learning Roadmap -->
+    <section class="section" style="background: var(--bg-color);">
+        <div class="section-header">
+            <div class="subheading mb-2">Structured Path</div>
+            <h2>The Elite Learning Roadmap</h2>
+            <p>Follow a battle-tested curriculum designed by IOI medalists and FAANG engineers to transform you from beginner to grandmaster.</p>
+        </div>
+        <div class="roadmap-container">
+            <div class="roadmap-card">
+                <div class="roadmap-icon">1</div>
+                <div class="roadmap-content">
+                    <h3>Phase 1: Algorithmic Foundations</h3>
+                    <p>Master time complexity, arrays, strings, basic mathematics, and fundamental data structures. The essential building blocks for competitive coding.</p>
+                </div>
+            </div>
+            <div class="roadmap-card">
+                <div class="roadmap-icon">2</div>
+                <div class="roadmap-content">
+                    <h3>Phase 2: Core Paradigms</h3>
+                    <p>Dive deep into greedy algorithms, binary search, and dynamic programming. Learn to recognize patterns and optimize solutions.</p>
+                </div>
+            </div>
+            <div class="roadmap-card">
+                <div class="roadmap-icon">3</div>
+                <div class="roadmap-content">
+                    <h3>Phase 3: Advanced Graph Theory</h3>
+                    <p>Conquer DFS, BFS, shortest paths, spanning trees, and network flow. Essential for solving complex structural problems.</p>
+                </div>
+            </div>
+            <div class="roadmap-card">
+                <div class="roadmap-icon">4</div>
+                <div class="roadmap-content">
+                    <h3>Phase 4: Elite Techniques</h3>
+                    <p>Segment trees, string matching algorithms (KMP, Z), advanced math (FFT, game theory). The tools of a competitive programming champion.</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+                document.querySelectorAll('.roadmap-card').forEach(card => observer.observe(card));
+            });
+        </script>
+    </section>
+
+    <!-- Section 2: Coding Challenge Categories -->
+    <section class="section">
+        <div class="section-header">
+            <div class="subheading mb-2">Challenge Library</div>
+            <h2>Categorized Problem Sets</h2>
+            <p>Access over 5,000+ problems from past global competitions, categorized by difficulty, topic, and required techniques.</p>
+        </div>
+        <div class="challenge-grid">
+            <div class="challenge-card">
+                <div class="challenge-bg"><img src="images/dp_visual.png" alt="Dynamic Programming"></div>
+                <div class="challenge-content">
+                    <h3 class="card-title">Dynamic Programming</h3>
+                    <div class="challenge-details">
+                        <p class="card-desc">Master overlapping subproblems and optimal substructure. From knapsack to complex 3D state transitions.</p>
+                        <a href="#" class="btn btn-outline btn-block mt-3" style="width:100%; border-color: rgba(255,255,255,0.2); color: white;">Explore DP</a>
+                    </div>
+                </div>
+            </div>
+            <div class="challenge-card">
+                <div class="challenge-bg"><img src="images/graph_visual.png" alt="Graph Algorithms"></div>
+                <div class="challenge-content">
+                    <h3 class="card-title">Graph Algorithms</h3>
+                    <div class="challenge-details">
+                        <p class="card-desc">Traversals, shortest paths, strongly connected components, and tree algorithms. The core of complex routing.</p>
+                        <a href="#" class="btn btn-outline btn-block mt-3" style="width:100%; border-color: rgba(255,255,255,0.2); color: white;">Explore Graphs</a>
+                    </div>
+                </div>
+            </div>
+            <div class="challenge-card">
+                <div class="challenge-bg"><img src="images/ds_visual.png" alt="Data Structures"></div>
+                <div class="challenge-content">
+                    <h3 class="card-title">Data Structures</h3>
+                    <div class="challenge-details">
+                        <p class="card-desc">Advanced data structures including Segment Trees, Fenwick Trees, Heaps, and Disjoint Set Unions.</p>
+                        <a href="#" class="btn btn-outline btn-block mt-3" style="width:100%; border-color: rgba(255,255,255,0.2); color: white;">Explore Data Structures</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Real-Time Judge Preview -->
+    <section class="section" style="background: var(--bg-color);">
+        <div class="section-header">
+            <div class="subheading mb-2">High-Performance Environment</div>
+            <h2>Real-Time Code Execution</h2>
+            <p>Our distributed online judge processes thousands of submissions per second with sub-millisecond precision.</p>
+        </div>
+        <div class="grid-3" style="grid-template-columns: 1fr 1.5fr; gap: 40px;">
+            <div class="fast-feedback-content">
+                <h3 class="mb-4">Lightning Fast Feedback</h3>
+                <p class="mb-4">Get instant results on your code performance. We support C++, Java, Python, Rust, and Go with industry-standard compiler flags to simulate real contest environments.</p>
+                <ul class="tick-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Strict time & memory limits
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Comprehensive test cases
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Visualized memory profiling
+                    </li>
+                </ul>
+            </div>
+            <div class="card" style="padding: 0; overflow: hidden; background: var(--bg-color);">
+                <div style="padding: 10px 20px; background: rgba(255,255,255,0.05); display: flex; gap: 10px; border-bottom: 1px solid var(--border-color);">
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--highlight-color);"></div>
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #FFB703;"></div>
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #00D4AA;"></div>
+                </div>
+                <div style="padding: 20px; font-family: monospace; color: #AAB4C3; line-height: 1.5;">
+                    <span style="color: #FFB703;">def</span> <span style="color: #00D4AA;">dijkstra</span>(graph, start):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;distances = {node: float(<span style="color: #00D4AA;">'inf'</span>) <span style="color: #FFB703;">for</span> node <span style="color: #FFB703;">in</span> graph}<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;distances[start] = <span style="color: var(--highlight-color);">0</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;pq = [(<span style="color: var(--highlight-color);">0</span>, start)]<br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #FFB703;">while</span> pq:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current_distance, current_node = heapq.heappop(pq)<br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #FFB703;">if</span> current_distance > distances[current_node]:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #FFB703;">continue</span><br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #556B8D;"># Telemetry: Validating adjacent nodes...</span><br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Success Stories & Community Rankings -->
+    <section class="section">
+        <div class="community-banner" style="margin-bottom: 50px;">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">Join The Global Leaderboard</h2>
+            <p style="font-size: 18px; color: var(--text-color); max-width: 600px; margin: 0 auto 30px auto; opacity: 0.8;">Compete in our weekly rated contests to climb the ranks. Showcase your algorithmic rating to elite hiring partners worldwide.</p>
+            <a href="#" class="btn btn-primary" style="padding: 12px 30px; font-size: 16px;">View Rankings & Enter Arena</a>
+        </div>
+        
+        <div class="section-header">
+            <div class="subheading mb-2">Elite Community</div>
+            <h2>Success Stories</h2>
+            <p>Join an ecosystem of top developers who have transformed their careers.</p>
+        </div>
+        
+        <div class="community-marquee-wrapper">
+            <div class="community-marquee">
+                <!-- Original Set -->
+                <div class="marquee-card">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--border-color); overflow: hidden;">
+                            <img src="images/hero_2.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 18px;">Alex Chen</h4>
+                            <span class="badge badge-hard">Grandmaster</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">"The structured roadmap and intense live contests propelled me to an ICPC World Finalist position and directly led to my quantitative trading offer."</p>
+                </div>
+                <div class="marquee-card">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--border-color); overflow: hidden;">
+                            <img src="images/hero_1.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 18px;">Sarah Jenkins</h4>
+                            <span class="badge badge-medium">Master</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">"The visual debugging and real-time algorithmic telemetry helped me finally understand advanced graph structures perfectly."</p>
+                </div>
+                <div class="marquee-card">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--border-color); overflow: hidden;">
+                            <img src="images/dp_visual.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 18px;">David Park</h4>
+                            <span class="badge badge-hard" style="background: #e74c3c; color: white;">Legendary</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">"AlgoPro's memory profiling tools completely changed how I approach optimizing tight constant factors in DP problems."</p>
+                </div>
+                <div class="marquee-card">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--border-color); overflow: hidden;">
+                            <img src="images/ds_visual.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 18px;">Elena Rostova</h4>
+                            <span class="badge badge-easy">Candidate Master</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">"From struggling with basic Segment Trees to writing persistent variations blindfolded. The best learning platform available."</p>
+                </div>
+                <!-- Duplicated Set for infinite loop -->
+                <div class="marquee-card">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--border-color); overflow: hidden;">
+                            <img src="images/hero_2.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 18px;">Alex Chen</h4>
+                            <span class="badge badge-hard">Grandmaster</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">"The structured roadmap and intense live contests propelled me to an ICPC World Finalist position and directly led to my quantitative trading offer."</p>
+                </div>
+                <div class="marquee-card">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--border-color); overflow: hidden;">
+                            <img src="images/hero_1.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 18px;">Sarah Jenkins</h4>
+                            <span class="badge badge-medium">Master</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">"The visual debugging and real-time algorithmic telemetry helped me finally understand advanced graph structures perfectly."</p>
+                </div>
+                <div class="marquee-card">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--border-color); overflow: hidden;">
+                            <img src="images/dp_visual.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 18px;">David Park</h4>
+                            <span class="badge badge-hard" style="background: #e74c3c; color: white;">Legendary</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">"AlgoPro's memory profiling tools completely changed how I approach optimizing tight constant factors in DP problems."</p>
+                </div>
+                <div class="marquee-card">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--border-color); overflow: hidden;">
+                            <img src="images/ds_visual.png" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 18px;">Elena Rostova</h4>
+                            <span class="badge badge-easy">Candidate Master</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">"From struggling with basic Segment Trees to writing persistent variations blindfolded. The best learning platform available."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="navbar-brand mb-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    Algo<span>Pro</span>
+                </a>
+                <p style="margin-top: 20px; max-width: 300px;">The ultimate platform for competitive programming, algorithmic mastery, and interview preparation.</p>
+                <div class="footer-social" style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="#" class="nav-icon-btn" title="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                    <a href="#" class="nav-icon-btn" title="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.45-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg></a>
+                    <a href="#" class="nav-icon-btn" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <div class="footer-links">
+                    <a href="courses.html">Courses</a>
+                    <a href="#">Problem Set</a>
+                    <a href="#">Leaderboard</a>
+                    <a href="contests.html">Contests</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Community</h4>
+                <div class="footer-links">
+                    <a href="community.html">Discussions</a>
+                    <a href="#">Blog</a>
+                    <a href="achievements.html">Achievements</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AlgoPro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <button class="back-to-top" id="backToTop" title="Go to top"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+</body>
+</html>

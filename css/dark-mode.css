@@ -1,0 +1,7 @@
+/* Dark Mode styles are the default in style.css.
+   This file is kept for architecture completeness and can be used for explicit dark overrides if light mode becomes the default.
+*/
+[data-theme="dark"] body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}

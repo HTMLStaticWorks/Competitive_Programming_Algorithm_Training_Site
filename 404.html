@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoPro | 404 Not Found</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .error-code {
+            font-size: 150px;
+            font-weight: 550;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 0 50px rgba(0, 212, 170, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div>
+            <div class="error-code">404</div>
+            <h1 style="margin-bottom: 20px;">Runtime Error: Page Not Found</h1>
+            <p style="font-size: 18px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 40px;">
+                The requested resource could not be located in our memory stack. It may have been garbage collected or never existed.
+            </p>
+            <a href="index.html" class="btn btn-primary" style="padding: 15px 40px; font-size: 18px;">Return to Main()</a>
+        </div>
+    </div>
+    <button class="back-to-top" id="backToTop" title="Go to top"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+</body>
+</html>
+
