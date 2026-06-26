@@ -183,8 +183,7 @@
         
         /* Elite Community Marquee & Banner */
         .community-marquee-wrapper { position: relative; width: 100%; overflow: hidden; padding: 20px 0; margin-bottom: 50px; z-index: 2; }
-        .community-marquee-wrapper::before { content:''; position:absolute; top:0; left:0; bottom:0; width:150px; background:linear-gradient(90deg, var(--bg-color), transparent); z-index:3; pointer-events:none; }
-        .community-marquee-wrapper::after { content:''; position:absolute; top:0; right:0; bottom:0; width:150px; background:linear-gradient(-90deg, var(--bg-color), transparent); z-index:3; pointer-events:none; }
+
         .community-marquee { display: flex; gap: 30px; width: max-content; animation: marqueeScroll 30s linear infinite; }
         .community-marquee:hover { animation-play-state: paused; }
         @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 15px)); } }
@@ -195,8 +194,7 @@
         [data-theme="light"] .community-banner { background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%); }
         .community-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-color), transparent); }
         [dir="rtl"] .community-marquee { animation: marqueeScrollRTL 30s linear infinite; }
-        [dir="rtl"] .community-marquee-wrapper::before { background:linear-gradient(-90deg, var(--bg-color), transparent); }
-        [dir="rtl"] .community-marquee-wrapper::after { background:linear-gradient(90deg, var(--bg-color), transparent); }
+
         @keyframes marqueeScrollRTL { 0% { transform: translateX(0); } 100% { transform: translateX(calc(50% + 15px)); } }
         /* Hero Section Responsive Fixes */
         @media screen and (max-width: 1024px) {

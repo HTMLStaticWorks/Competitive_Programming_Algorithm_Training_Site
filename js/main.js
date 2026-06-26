@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Mobile offcanvas active state — highlight current page link
-  const mobileLinks = document.querySelectorAll('.offcanvas-links .mobile-nav-link');
+  const mobileLinks = document.querySelectorAll('.offcanvas-links a');
   mobileLinks.forEach(link => {
     const linkHref = link.getAttribute('href');
     if (linkHref === currentPath || (currentPath === '' && linkHref === 'index.html')) {
